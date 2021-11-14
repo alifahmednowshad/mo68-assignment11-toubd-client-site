@@ -1,0 +1,11 @@
+.top-banner{
+    background-image: url('../../../Images/top-banner.jpg');
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.banner-text{
+    
+}
