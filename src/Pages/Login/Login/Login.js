@@ -7,18 +7,20 @@ import useAuth from "../../../Hooks/useAuth";
 const Login = () => {
 
     const [loginData, setLoginData] = useState([]);
-    const { user,loginUser, signInWithGoogle, isLoading, authError } = useAuth();
+    const { user, loginUser, isLoading, authError, signInWithGoogle } = useAuth();
 
-    const location = useLocation();
     const history = useHistory();
+    const location = useLocation();
 
-    const handleOnChange = e => {
+    const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginData(newLoginData);
+        console.log(newLoginData)
     }
+
     const handleLoginSubmit = e => {
         e.preventDefault();
         loginUser(loginData.email, loginData.password, location, history);
@@ -29,28 +31,32 @@ const Login = () => {
     }
 
     return (
-        <div className='container'>
-            <div className='my-5'>
-                <h1 className='text-danger'>Login Here</h1>
-                <button className='btn btn-danger' onClick={handleGoogleSignIn}>Google Sign In</button>
-            </div>
+        <div className='container col-12 col-md-5 mx-auto'>
+            <h1 className='text-danger my-4'>Login Here</h1>
 
-            <form onSubmit={handleLoginSubmit} className='col-12 col-md-6 mx-auto'>
+            <form onSubmit={handleLoginSubmit} className=''>
                 <div className="mb-3 text-start">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                    <input onChange={handleOnChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <input onBlur={handleOnBlur} name='email' type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required/>
                 </div>
-                <div className="mb-3 text-start">
+                 <div className="mb-3 text-start">
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input onChange={handleOnChange} type="password" className="form-control" id="exampleInputPassword1"/>
+                    <input onBlur={handleOnBlur} name='password' type="password" className="form-control" id="exampleInputPassword1" required/>
                 </div>
-                <button type="submit" className="w-100 btn btn-primary">Login</button>
+                <button type="submit" className="mb-3 mt-2 w-100 btn btn-primary">Login</button>
                 <Link to='register'><p>New User? Please Register</p></Link>
-
-                {isLoading && (<div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>)}
-                {user?.email && (<div className="alert alert-primary" role="alert">Login Successfully!</div>)}
-                {authError && alert({authError})}
             </form>
+
+            {isLoading && (<div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>)}
+
+            {user?.email && (<div className="alert alert-primary" role="alert">Login Successfully!</div>)}
+
+            {authError && (<div className="alert alert-danger" role="alert">{authError}</div>)}
+
+            <div className='my-4 d-flex justify-content-center align-items-center'>
+                <h3 className='text-danger me-5'>Also Signin</h3>
+                <button className='btn btn-danger py-2' onClick={handleGoogleSignIn}>Google Sign In</button>
+            </div>
         </div>
     );
 };

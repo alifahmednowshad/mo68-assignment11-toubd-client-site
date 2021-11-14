@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Service.css'
 
 
 const Service = ({ service }) => {
 
-    const { _id, title, price, des, img } = service;
+    const { _id, title, price, description, img } = service;
 
     return (
         
@@ -14,12 +15,12 @@ const Service = ({ service }) => {
                 </div>
                 <div className="card-body">
                     <h3>{title}</h3>
-                    <p className="text-start">{des}</p>
-                    <h5>Price: {price}</h5>
+                    <p className="text-start">{description}</p>
+                    <h5>Price BDT: {price}</h5>
                 </div>
                 <div className="card-footer pt-0 mb-2 bg-light border-0">
                         <Link to={`/orderPlace/${_id}`}>
-                            <button className="w-50 btn p-2 btn-danger">Booking Now</button>
+                            <button className="w-50 btn p-2 btn-danger">Buy Now</button>
                         </Link>
                     </div> 
             </div>

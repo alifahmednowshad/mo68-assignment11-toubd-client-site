@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import './Navigation.css'
 
 
 const Navigation = () => {
@@ -8,10 +9,10 @@ const Navigation = () => {
     const {user, logOut} = useAuth();
 
     return (
-        <div className='bg-info'>
-            <nav className="navbar navbar-expand-lg navbar-light m-0 p-0 bg-danger">  
+        <div className='sticky-top my-navigation p-0 m-0'>
+            <nav className="navbar navbar-expand-lg navbar-light bg-danger">  
                 <div className="container">
-                    <span className="navbar-brand fs-3 m-0 p-1 text-white">Buy Bicycle</span>
+                    <span className="navbar-brand fs-3 text-white">Buy Bicycle</span>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -24,10 +25,10 @@ const Navigation = () => {
                                 <Link className="nav-link text-white" to="/services">Services</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-white" to="/myBooking">My Orders</Link>
+                                <Link className="nav-link text-white" to="/dashboard">Dashboard</Link>
                             </li>
                             <li className="nav-item">
-                                <span className="nav-link text-warning" >{user.displayName}</span>
+                                <Link className="nav-link text-white" to="/admin">Admin</Link>
                             </li>
                             {
                                 user.email ?
@@ -39,6 +40,9 @@ const Navigation = () => {
                                     <Link className="nav-link text-white" to="/login">Login</Link>
                                 </li>
                             }
+                            <li className="nav-item">
+                                <span className="nav-link text-warning" >{user.displayName}</span>
+                            </li>
                         </ul>
                     </div>
                 </div>

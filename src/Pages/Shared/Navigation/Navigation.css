@@ -1,0 +1,5 @@
+
+html{
+    scroll-margin-top: 50px;
+    scroll-behavior: smooth;
+}
