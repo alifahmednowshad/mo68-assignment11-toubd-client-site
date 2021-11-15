@@ -3,12 +3,16 @@ import useAuth from '../../../Hooks/useAuth';
 
 const MyOrder = () => {
 
-    const {user} = useAuth();
+    const {user, token} = useAuth();
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/orders?email=${user.email}`
-        fetch(url)
+        const url = `https://dry-escarpment-15503.herokuapp.com/orders?email=${user.email}`
+        fetch(url, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data));
     }, []);
@@ -16,7 +20,7 @@ const MyOrder = () => {
     const handleDeleteOrder = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if(proceed){
-            const url = `http://localhost:5000/orders/${id}`;
+            const url = `https://dry-escarpment-15503.herokuapp.com/orders/${id}`;
         fetch(url, {
             method: "DELETE"
         })

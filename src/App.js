@@ -16,12 +16,13 @@ import NotFound from "./Pages/NotFound/NotFound";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 
 
+
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
-          <Navigation></Navigation>
+        <Navigation></Navigation>
           <Switch>
             <Route exact path='/'>
               <Home></Home>

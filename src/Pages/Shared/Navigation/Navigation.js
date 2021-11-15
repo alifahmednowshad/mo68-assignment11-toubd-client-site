@@ -9,7 +9,7 @@ const Navigation = () => {
     const {user, logOut} = useAuth();
 
     return (
-        <div className='sticky-top my-navigation p-0 m-0'>
+        <div className='my-navigation p-0 m-0'>
             <nav className="navbar navbar-expand-lg navbar-light bg-danger">  
                 <div className="container">
                     <span className="navbar-brand fs-3 text-white">Buy Bicycle</span>

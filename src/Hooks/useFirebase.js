@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false)
     const [token, setToken] = useState('');
 
     const auth = getAuth();
@@ -89,7 +90,13 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribed;
-    }, [])
+    }, [auth])
+
+    useEffect(() => {
+        fetch(`https://dry-escarpment-15503.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     //Log Out Fucntion
     const logOut = () => {
@@ -105,7 +112,7 @@ const useFirebase = () => {
     //Save Database Function
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://dry-escarpment-15503.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -117,6 +124,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         token,
         isLoading,
         authError,

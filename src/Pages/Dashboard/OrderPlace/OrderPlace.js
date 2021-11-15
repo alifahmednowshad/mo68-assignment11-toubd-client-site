@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
+import Navigation from '../../Shared/Navigation/Navigation';
 import './OrderPlace.css'
 
 const OrderPlace = () => {
@@ -11,7 +12,7 @@ const OrderPlace = () => {
     const [service, setService] = useState([]);
 
     useEffect( () => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://dry-escarpment-15503.herokuapp.com/services/${serviceId}`)
         .then(res => res.json())
         .then(data => setService(data))
     },[]);
@@ -23,7 +24,7 @@ const OrderPlace = () => {
     const onSubmit = data => {
         console.log(data);
     
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://dry-escarpment-15503.herokuapp.com/orders', data)
         .then(res => {
             if(res.data.insertedId){
                 alert('Order processed Successfully');
@@ -33,7 +34,10 @@ const OrderPlace = () => {
     }
 
     return (
-        <div className='container'>
+        
+        <div>
+            <Navigation></Navigation>
+            <div  className='container'>
             <h2 className='my-4'>Place Your Order</h2>
             <div className='row g-5'>
                 <div className="col-12 col-md-6">
@@ -56,6 +60,7 @@ const OrderPlace = () => {
                         <input className='col-12 btn btn-success py-1 fs-5' type="submit" value='Order Place' />
                     </form>
                 </div>
+            </div>
             </div>
         </div>
     );
