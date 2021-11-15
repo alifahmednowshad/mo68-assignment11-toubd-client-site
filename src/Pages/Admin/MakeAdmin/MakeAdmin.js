@@ -1,5 +1,5 @@
 import { Button, TextField, Alert } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 
 
@@ -32,8 +32,8 @@ const MakeAdmin = () => {
         e.preventDefault()
     }
     return (
-        <div>
-            <h2>Make an Admin</h2>
+        <div className='mb-5'>
+            <h2 className='text-danger my-5'>Make an Admin</h2>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
                     sx={{ width: '50%' }}

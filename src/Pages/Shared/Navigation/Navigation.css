@@ -1,5 +1,8 @@
-
 /* html{
     scroll-margin-top: 50px;
     scroll-behavior: smooth;
 } */
+
+.my-hover:hover{
+    background-color: rgb(250, 56, 56);
+}

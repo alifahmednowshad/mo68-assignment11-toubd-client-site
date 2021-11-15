@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Service from '../Service/Service';
+import { useEffect, useState } from "react";
+import ManageService from "../ManageServie/ManageService";
 
-const Services = () => {
+
+const ManageServices = () => {
 
     const [services, setServices] = useState([]);
 
@@ -14,12 +15,12 @@ const Services = () => {
     return (
         <div>
             <div className='container my-5'>
-                <h1 className="text-danger mt-5">Our services</h1>
+                <h1 className="text-danger mt-5">Manage Services</h1>
                 <div className="d-flex row my-3 g-4">
                     {
-                        services.map(service => <div  key={service._id} className="col-lg-4 col-md-6 col-12 "><Service
+                        services.map(service => <div  key={service._id} className="col-lg-4 col-md-6 col-12 "><ManageService
                             service={service}
-                        ></Service></div>)
+                        ></ManageService></div>)
                     }
                 </div>
             </div>
@@ -27,4 +28,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default ManageServices;

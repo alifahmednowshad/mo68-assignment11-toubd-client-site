@@ -3,7 +3,11 @@ import { Route, Switch } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import AuthProvider from "./Context/authProvider";
+import AddItem from "./Pages/Admin/AddItem/AddItem";
 import Admin from "./Pages/Admin/Admin/Admin";
+import MakeAdmin from "./Pages/Admin/MakeAdmin/MakeAdmin";
+import ManageAllOrders from "./Pages/Admin/ManageAllOrders/ManageAllOrders";
+import ManageProduct from "./Pages/Admin/ManageProduct/ManageProduct";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import MyOrder from "./Pages/Dashboard/My Order/MyOrder";
 import OrderPlace from "./Pages/Dashboard/OrderPlace/OrderPlace";
@@ -13,6 +17,7 @@ import Login from "./Pages/Login/Login/Login";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import Register from "./Pages/Login/Register/Register";
 import NotFound from "./Pages/NotFound/NotFound";
+import Footer from "./Pages/Shared/Footer/Footer";
 import Navigation from "./Pages/Shared/Navigation/Navigation";
 
 
@@ -30,9 +35,9 @@ function App() {
             <Route exact path='/home'>
               <Home></Home>
             </Route>
-            <PrivateRoute exact path='/services'>
+            <Route exact path='/services'>
               <Services></Services>
-            </PrivateRoute>
+            </Route>
             <PrivateRoute exact path='/dashboard'>
               <Dashboard></Dashboard>
             </PrivateRoute>
@@ -48,6 +53,18 @@ function App() {
             <PrivateRoute exact path='/admin'>
               <Admin></Admin>
             </PrivateRoute>
+            <PrivateRoute exact path='/manageOrder'>
+              <ManageAllOrders></ManageAllOrders>
+            </PrivateRoute>
+            <PrivateRoute exact path='/addProduct'>
+              <AddItem></AddItem>
+            </PrivateRoute>
+            <PrivateRoute exact path='/makeAdmin'>
+              <MakeAdmin></MakeAdmin>
+            </PrivateRoute>
+            <PrivateRoute exact path='/manageProduct'>
+              <ManageProduct></ManageProduct>
+            </PrivateRoute>
             <Route exact path='/login'>
               <Login></Login>
             </Route>
@@ -58,6 +75,7 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>

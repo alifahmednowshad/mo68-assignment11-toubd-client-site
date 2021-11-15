@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
-import Navigation from '../../Shared/Navigation/Navigation';
 import './OrderPlace.css'
 
 const OrderPlace = () => {
@@ -36,7 +35,6 @@ const OrderPlace = () => {
     return (
         
         <div>
-            <Navigation></Navigation>
             <div  className='container'>
             <h2 className='my-4'>Place Your Order</h2>
             <div className='row g-5'>
@@ -57,7 +55,7 @@ const OrderPlace = () => {
                         <input className='col-12 mb-2 py-1' placeholder="City" defaultValue="" {...register("city")} />
                         <input className='col-12 mb-2 py-1' placeholder="Phone" defaultValue='' {...register("phone")} />
                         <input className='d-none col-12 mb-2 py-1' defaultValue='pending' {...register("status")} />
-                        <input className='col-12 btn btn-success py-1 fs-5' type="submit" value='Order Place' />
+                        <input className='col-12 btn btn-danger py-1 fs-5' type="submit" value='Order Place' />
                     </form>
                 </div>
             </div>
