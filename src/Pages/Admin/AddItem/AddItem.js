@@ -19,10 +19,10 @@ const AddItem = () => {
 
     return (
         <div className='add-service my-5'>
-            <h2 className='text-danger py-3'>Add Service Item</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register("title", { required: true, maxLength: 20 })} placeholder='Place Name' />
-            <textarea {...register("des")} placeholder='Description (minimum 200 word)' />
+            <h2 className='text-danger py-3'>Add Product</h2>
+            <form className='col-12 col-md-7 mx-auto' onSubmit={handleSubmit(onSubmit)}>
+            <input {...register("title", { required: true, maxLength: 20 })} placeholder='Product Name' />
+            <textarea {...register("description")} placeholder='Description (minimum 200 word)' />
             <input type="number" {...register("price")} placeholder='Price' />
             <input {...register("img")} placeholder='Image Url' />
             <input className='btn btn-danger py-2' type="submit" />

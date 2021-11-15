@@ -4,7 +4,7 @@ import useAuth from '../../../Hooks/useAuth';
 const Review = () => {
     const {user} = useAuth();
     return (
-        <div className='container'>
+        <div className='container mb-5'>
             <div className="d-flex row my-3 g-4">
             {
                 <div className="card my-card h-100  bg-light">

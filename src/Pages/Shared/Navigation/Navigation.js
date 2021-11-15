@@ -28,25 +28,25 @@ const Navigation = () => {
                                 !admin?
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link text-white " data-bs-toggle="dropdown" role="button" aria-expanded="false" to="/Dashboard">Dashboard</Link>
-                                    <ul class="dropdown-menu bg-danger ">
+                                    <ul className="dropdown-menu bg-danger ">
                                         <li>
-                                            <Link className="dropdown-item nav-link text-white my-hover" to="/dashboard">My Orders</Link>
+                                            <Link className="dropdown-item nav-link text-white my-hover" to="/myOrder">My Orders</Link>
                                         </li>
                                         <li>
                                             <Link className="dropdown-item nav-link text-white my-hover" to="/dashboard">Review</Link>
                                         </li>
                                         <li>
-                                            <Link className="dropdown-item nav-link text-white my-hover" to="/dashboard">Payment</Link>
+                                            <Link className="dropdown-item nav-link text-white my-hover" to="/payment">Payment</Link>
                                         </li>
                                         <li>
-                                            <Link className="dropdown-item nav-link text-white my-hover" to="/dashboard">Log Out</Link>
+                                            <Link className="dropdown-item nav-link text-white my-hover" onClick={logOut}  to="/home">Log Out</Link>
                                         </li>
                                     </ul>
                                 </li>
                                 :
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link text-white " data-bs-toggle="dropdown" role="button" aria-expanded="false" to="/admin">Admin</Link>
-                                    <ul class="dropdown-menu bg-danger ">
+                                    <ul className="dropdown-menu bg-danger ">
                                         <li>
                                             <Link className="dropdown-item nav-link text-white my-hover" to="/manageOrder">Manage All Orders</Link>
                                         </li>

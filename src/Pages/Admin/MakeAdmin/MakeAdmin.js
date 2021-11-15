@@ -1,5 +1,6 @@
 import { Button, TextField, Alert } from '@mui/material';
-import { useState } from 'react';
+import { height } from '@mui/system';
+import React, { useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 
 
@@ -27,21 +28,22 @@ const MakeAdmin = () => {
                     console.log(data);
                     setSuccess(true);
                 }
+               
             })
 
         e.preventDefault()
     }
     return (
-        <div className='mb-5'>
-            <h2 className='text-danger my-5'>Make an Admin</h2>
+        <div className='my-5'>
+            <h2>Make an Admin</h2>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
-                    sx={{ width: '50%' }}
+                    sx={{ width: '40%', height: '30px', margin:'40px' }}
                     label="Email"
                     type="email"
                     onBlur={handleOnBlur}
-                    variant="standard" />
-                <Button type="submit" variant="contained">Make Admin</Button>
+                    variant="outlined" /><br/>
+                <Button type="submit" sx={{paddingTop: '10px', paddingBottom: '10px'}} size="medium" variant="contained">Make Admin</Button>
             </form>
             {success && <Alert severity="success">Made Admin successfully!</Alert>}
         </div>

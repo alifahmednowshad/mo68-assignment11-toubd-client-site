@@ -36,14 +36,14 @@ const OrderPlace = () => {
         
         <div>
             <div  className='container'>
-            <h2 className='my-4'>Place Your Order</h2>
+            <h2 className='text-danger my-4'>Place Your Order</h2>
             <div className='row g-5'>
                 <div className="col-12 col-md-6">
                     <img src={service.img} className='img-fluid w-100 my-img' alt="" />
                     <div className='bg-light py-3'>
-                        <h3>Tour: {service.title}</h3>
+                        <h3>{service.title}</h3>
                         <h5>Order ID: {serviceId}</h5>
-                        <h3>Price: {service.price}</h3>
+                        <h3>Price BDT: {service.price}</h3>
                     </div>
                 </div>
                 <div className="col-12 col-md-6"> 

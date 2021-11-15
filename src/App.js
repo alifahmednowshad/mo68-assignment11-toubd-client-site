@@ -7,10 +7,11 @@ import AddItem from "./Pages/Admin/AddItem/AddItem";
 import Admin from "./Pages/Admin/Admin/Admin";
 import MakeAdmin from "./Pages/Admin/MakeAdmin/MakeAdmin";
 import ManageAllOrders from "./Pages/Admin/ManageAllOrders/ManageAllOrders";
+import UpdateStatus from "./Pages/Admin/ManageAllOrders/UpdateStatus/UpdateStatus";
 import ManageProduct from "./Pages/Admin/ManageProduct/ManageProduct";
-import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import MyOrder from "./Pages/Dashboard/My Order/MyOrder";
 import OrderPlace from "./Pages/Dashboard/OrderPlace/OrderPlace";
+import Payment from "./Pages/Dashboard/Payment/Payment";
 import Home from "./Pages/Home/Home/Home";
 import Services from "./Pages/Home/Services/Services";
 import Login from "./Pages/Login/Login/Login";
@@ -38,8 +39,11 @@ function App() {
             <Route exact path='/services'>
               <Services></Services>
             </Route>
-            <PrivateRoute exact path='/dashboard'>
-              <Dashboard></Dashboard>
+            <PrivateRoute exact path='/myOrder'>
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute exact path='/payment'>
+              <Payment></Payment>
             </PrivateRoute>
             <PrivateRoute exact path='/orderPlace'>
               <OrderPlace></OrderPlace>
@@ -55,6 +59,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path='/manageOrder'>
               <ManageAllOrders></ManageAllOrders>
+            </PrivateRoute>
+            <PrivateRoute exact path='/orders/update/:id'>
+              <UpdateStatus></UpdateStatus>
             </PrivateRoute>
             <PrivateRoute exact path='/addProduct'>
               <AddItem></AddItem>

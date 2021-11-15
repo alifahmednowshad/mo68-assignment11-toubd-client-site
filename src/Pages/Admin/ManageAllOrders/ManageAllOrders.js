@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import AddItem from '../AddItem/AddItem';
 
 const ManageAllOrders = () => {
 
     const [orders, setOrders] = useState([]);
     useEffect( () => {
-        fetch('https://pacific-castle-02145.herokuapp.com/orders')
+        fetch('https://dry-escarpment-15503.herokuapp.com/orders')
         .then(res => res.json())
         .then(data => setOrders(data))
     }, []);
 
    
-    
     return (
         <div className='container my-5'>
-            <div className='bg-success mt-5'>
-                <div className='row align-items-center'>
-                    <div className='col-12 col-md-4'>
-                        <h2 className='text-white my-3'>Manage All Orders</h2>
-                    </div>
-                    <div  className='col-12 col-md-8 py-2'>
+            <div className='bg-light py-5'>
+                <div className=''>
+                    <h2 className='text-danger mb-4'>Manage All Orders</h2>
+                    <div  className='bg-danger col-12 col-md-8 mx-auto py-2'>
                         {
                             orders.map(order => <div className='row align-items-center m-4 bg-light p-1' key={order._id}>
                             <div className='col-12 col-md-6'>
@@ -30,9 +26,9 @@ const ManageAllOrders = () => {
                             </div>
                             <div className='col-12 col-md-6'>
                                 <div className='d-flex  justify-content-center align-items-center'>
-                                    <h4><span className='text-danger mx-3'>{order.status}</span></h4>
+                                    <h4><span className='mx-3'>{order.status}</span></h4>
                                     <Link to={`/orders/update/${order._id}`}>
-                                    <button className='btn btn-success mb-2'>Update Status</button></Link>
+                                    <button className='btn btn-danger mb-2'>Update Status</button></Link>
                                 </div> 
                             </div>
                         </div>)

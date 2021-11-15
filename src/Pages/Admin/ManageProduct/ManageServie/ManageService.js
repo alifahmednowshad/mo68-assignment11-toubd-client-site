@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 
 
 const ManageService = ({ service }) => {
 
     const { title, price, description, img } = service;
 
-    const [orders, setOrders] = useState([]);
-    useEffect( () => {
-        fetch('https://dry-escarpment-15503.herokuapp.com/orders')
-        .then(res => res.json())
-        .then(data => setOrders(data))
+    const [services, setServices] = useState([]);
+    const {id} = useParams();
+
+    useEffect(() => {
+        fetch('https://dry-escarpment-15503.herokuapp.com/services')
+            .then(res => res.json())
+            .then(data => setServices(data));
     }, []);
 
-    const handleDeleteOrder = id => {
+    const handleDeleteServices = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if(proceed){
-            const url = `https://dry-escarpment-15503.herokuapp.com/orders/${id}`;
+            const url = `https://dry-escarpment-15503.herokuapp.com/services/${id}`;
         fetch(url, {
             method: "DELETE"
         })
@@ -23,8 +26,8 @@ const ManageService = ({ service }) => {
         .then(data => {
             if(data.deletedCount > 0){
                 alert('deleted successfully');
-                const remainingOrders = orders.filter(order => order._id !== id);
-                setOrders(remainingOrders);
+                const remainingOrders = services.filter(service => service._id !== id);
+                setServices(remainingOrders);
             }
         });
         }
@@ -42,9 +45,7 @@ const ManageService = ({ service }) => {
                     <h5>Price BDT: {price}</h5>
                 </div>
                 <div className="card-footer pt-0 mb-2 bg-light border-0">
-                    {
-                        orders.map(order => <button key={order._id} className='w-100 btn btn-danger' onClick={() => handleDeleteOrder(order._id)}>Delete</button>
-                    )}
+                <button conClick={() => handleDeleteServices(service_id)}>Delete Product</button>
                 </div> 
             </div>
         
@@ -53,3 +54,4 @@ const ManageService = ({ service }) => {
 };
 
 export default ManageService;
+

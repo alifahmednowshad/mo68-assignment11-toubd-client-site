@@ -11,7 +11,7 @@ const ManageServices = () => {
             .then(res => res.json())
             .then(data => setServices(data));
     }, []);
-
+  
     return (
         <div>
             <div className='container my-5'>
