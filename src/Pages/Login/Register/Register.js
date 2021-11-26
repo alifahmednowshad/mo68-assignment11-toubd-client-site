@@ -32,6 +32,7 @@ const Register = () => {
     return (
         <div className='container col-12 col-md-6 mx-auto'>
             <h2>Register</h2>
+            {/* form  */}
             { !isLoading && <form onSubmit={handleLoginSubmit} className=''>
                 <div className="mb-3 text-start">
                     <label htmlFor="exampleInputName1" className="form-label">Name</label>
